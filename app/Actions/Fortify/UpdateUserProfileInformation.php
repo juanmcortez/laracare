@@ -1,0 +1,68 @@
+<?php
+/*
+ * Copyright (c) 2025
+ *
+ *  @author Juan Manuel Cortéz <juanm.cortez@gmail.com>
+ *  @copyright 2025 Nobidium LLC.
+ *  @license MIT License
+ */
+
+namespace App\Actions\Fortify;
+
+use App\Models\Users\User;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+
+class UpdateUserProfileInformation implements UpdatesUserProfileInformation
+{
+    /**
+     * Validate and update the given user's profile information.
+     *
+     * @param  array<string, string>  $input
+     */
+    public function update(User $user, array $input): void
+    {
+        Validator::make($input, [
+            'username' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ],
+
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ],
+        ])->validateWithBag('updateProfileInformation');
+
+        if ($input['email'] !== $user->email) {
+            $this->updateVerifiedUser($user, $input);
+        } else {
+            $user->forceFill([
+                'username' => $input['username'],
+                'email' => $input['email'],
+            ])->save();
+        }
+    }
+
+    /**
+     * Update the given verified user's profile information.
+     *
+     * @param  array<string, string>  $input
+     */
+    protected function updateVerifiedUser(User $user, array $input): void
+    {
+        $user->forceFill([
+            'username' => $input['username'],
+            'email' => $input['email'],
+            'email_verified_at' => null,
+        ])->save();
+
+        $user->sendEmailVerificationNotification();
+    }
+}
