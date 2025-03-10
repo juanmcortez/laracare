@@ -1,8 +1,15 @@
 <?php
+/*
+ * Copyright (c) 2025
+ *
+ *  @author Juan Manuel Cortéz <juanm.cortez@gmail.com>
+ *  @copyright 2025 Nobidium LLC.
+ *  @license MIT License
+ */
 
 namespace App\Actions\Fortify;
 
-use App\Models\User;
+use App\Models\Users\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\ResetsUserPasswords;

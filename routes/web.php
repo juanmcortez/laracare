@@ -13,6 +13,11 @@ Route::middleware('auth')->group(function () {
     // Landing now is protected with login
     Route::get('/', function () {
         return view('landing');
-    });
+    })->name('main');
+
+    // Logged in user files
+    Route::get('/user/profile', function () {
+        return view('pages.users.profile', ['user' => Auth::user()]);
+    })->name('user.profile');
 });
 

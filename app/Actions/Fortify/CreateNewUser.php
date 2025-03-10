@@ -9,7 +9,7 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\User;
+use App\Models\Users\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
