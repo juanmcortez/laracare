@@ -3,7 +3,9 @@
         <li>KK</li>
     </ul>
     <ul>
-        <li>LL</li>
+        <li>
+            <x-ui.general.flaticon/>
+        </li>
     </ul>
     <ul>
         <li>MM</li>

@@ -1,5 +1,5 @@
 <aside class="main-nav">
-    <div class="logo">LOGO</div>
+    <div class="logo"><i class="fi fi-rs-webhook"></i></div>
     <nav class="navigation">
         <ul>
             <li>AA</li>

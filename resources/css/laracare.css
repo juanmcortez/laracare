@@ -7,6 +7,8 @@
  */
 
 @import 'tailwindcss';
+@import "@flaticon/flaticon-uicons/css/regular/straight.css";
+@import "@flaticon/flaticon-uicons/css/solid/straight.css";
 
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
@@ -18,7 +20,7 @@
 @source "../**/*.vue";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* **** dark / light **** */
@@ -51,6 +53,11 @@
     [role="button"]:not(:disabled) {
         cursor: pointer;
     }
+
+    body {
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
 }
 
 .wrapper {
@@ -73,6 +80,11 @@
     @apply items-center justify-center;
     @apply text-light-font;
     @apply border-b border-light-font/25;
+}
+
+.wrapper .main-nav .logo i {
+    @apply mt-1;
+    @apply text-4xl text-accent;
 }
 
 .wrapper .main-nav .navigation {
@@ -164,6 +176,8 @@
     @apply w-full min-h-14;
     @apply m-0 px-4;
     @apply items-center justify-between;
+    @apply text-xs;
+    @apply text-primary;
     @apply border-t border-secondary-light/10;
 }
 
@@ -177,34 +191,34 @@
     @apply border-l-4;
 }
 
-.toast svg {
+.toast i {
     @apply w-3.5 h-3.5;
-    @apply mt-0.5 mr-2;
+    @apply mt-0.5 ml-1 mr-2;
 }
 
 .toast.info,
-.toast.info svg {
+.toast.info i {
     @apply text-light;
     @apply bg-info fill-info-dark;
     @apply border-info-dark;
 }
 
 .toast.success,
-.toast.success svg {
+.toast.success i {
     @apply text-light;
     @apply bg-success fill-success-dark;
     @apply border-success-dark;
 }
 
 .toast.warning,
-.toast.warning svg {
+.toast.warning i {
     @apply text-light;
     @apply bg-warning fill-warning-dark;
     @apply border-warning-dark;
 }
 
 .toast.alert,
-.toast.alert svg {
+.toast.alert i {
     @apply text-light;
     @apply bg-danger fill-danger-dark;
     @apply border-danger-dark;
@@ -221,6 +235,18 @@
     @apply flex;
     @apply w-1/2 h-full;
     @apply bg-linear-to-b from-secondary to-secondary-light;
+}
+
+.authentication .wrapper main .content .main .left-side .logo {
+    @apply flex flex-col;
+    @apply w-full h-14;
+    @apply items-center justify-center;
+    @apply text-light-font;
+}
+
+.authentication .wrapper main .content .main .left-side .logo i {
+    @apply mt-1;
+    @apply text-4xl text-accent;
 }
 
 .authentication .wrapper main .content .main .right-side {
