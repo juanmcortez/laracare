@@ -1,4 +1,15 @@
+/*
+ * Copyright (c) 2025
+ *
+ *  @author Juan Manuel Cortéz <juanm.cortez@gmail.com>
+ *  @copyright 2025 Nobidium LLC.
+ *  @license MIT License
+ */
+
 @import 'tailwindcss';
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -8,5 +19,174 @@
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* **** dark / light **** */
+    --color-dark: #232c31;
+    --color-light: #f9fafc;
+    --color-light-variant: #eaeff2;
+    /* **** colors **** */
+    --color-primary: #78979c;
+    --color-primary-dark: #49747b;
+    --color-secondary: #232c31;
+    --color-secondary-light: #2c3941;
+    /* **** accent **** */
+    --color-accent: #74e8d1;
+    /* **** fonts **** */
+    --color-dark-font: #000000;
+    --color-light-font: #7a7b7d;
+    /* **** alerts **** */
+    --color-info: #45b9f2;
+    --color-success: #99dd4a;
+    --color-warning: #555ab8;
+    --color-danger: #fe6867;
 }
+
+@layer base {
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+.wrapper {
+    @apply flex flex-row;
+    @apply w-full h-screen;
+    @apply overflow-hidden;
+    @apply text-dark-font;
+}
+
+.wrapper .main-nav {
+    @apply flex flex-col;
+    @apply w-14 h-full;
+    @apply text-accent;
+    @apply bg-linear-to-b from-secondary to-secondary-light;
+}
+
+.wrapper .main-nav .logo {
+    @apply flex flex-col;
+    @apply w-14 h-14;
+    @apply items-center justify-center;
+    @apply text-light-font;
+    @apply border-b border-light-font/25;
+}
+
+.wrapper .main-nav .navigation {
+    @apply flex flex-col;
+    @apply w-14 h-full;
+    @apply items-center justify-between;
+}
+
+.wrapper .sidebar {
+    @apply flex flex-col;
+    @apply w-72 h-full;
+    @apply text-light;
+    @apply bg-linear-to-b from-primary-dark to-primary;
+    @apply not-has-[nav.navigation>ul]:hidden;
+}
+
+.wrapper .sidebar .app-name {
+    @apply flex flex-col;
+    @apply w-full h-14;
+    @apply px-4;
+    @apply items-start justify-center;
+    @apply uppercase;
+    @apply border-b border-secondary-light/10;
+}
+
+.wrapper .sidebar .navigation {
+    @apply flex flex-col;
+    @apply w-full h-full;
+    @apply items-start justify-start;
+}
+
+.wrapper .sidebar .navigation ul,
+.wrapper .sidebar .navigation ul li {
+    @apply w-full h-auto;
+}
+
+.wrapper .sidebar .navigation ul li.section {
+    @apply flex;
+    @apply w-full h-14;
+    @apply px-4;
+    @apply items-center justify-start;
+    @apply uppercase;
+    @apply text-dark-font;
+    @apply bg-light-variant;
+}
+
+.wrapper .sidebar .navigation ul li span {
+    @apply flex;
+    @apply w-full h-auto;
+    @apply my-1 pt-0.5 pb-1 pl-4;
+    @apply text-xs uppercase;
+    @apply text-light/50;
+    @apply bg-primary-dark;
+}
+
+.wrapper .sidebar .navigation ul li:first-of-type span {
+    @apply my-0 mb-1;
+}
+
+.wrapper main {
+    @apply flex flex-col;
+    @apply w-full h-full;
+    @apply bg-linear-to-b from-light-variant to-light;
+}
+
+.wrapper main header {
+    @apply flex flex-row;
+    @apply w-full h-14;
+    @apply m-0 px-4;
+    @apply items-center justify-between;
+    @apply border-b border-secondary-light/10;
+}
+
+.wrapper main .content {
+    @apply flex flex-col;
+    @apply w-full h-full;
+    @apply overflow-y-scroll;
+}
+
+.wrapper main .content .main {
+    @apply flex-1 flex-col;
+    @apply w-full min-h-fit;
+    @apply m-0 p-4;
+    @apply items-start justify-start;
+}
+
+.wrapper main .content footer {
+    @apply flex flex-row;
+    @apply w-full min-h-14;
+    @apply m-0 px-4;
+    @apply items-center justify-between;
+    @apply border-t border-secondary-light/10;
+}
+
+/* ************************ */
+/* **** AUTHENTICATION **** */
+.authentication .wrapper main .content .main {
+    @apply flex flex-row;
+    @apply m-0 p-0;
+}
+
+.authentication .wrapper main .content .main .left-side {
+    @apply flex;
+    @apply w-1/2 h-full;
+    @apply bg-linear-to-b from-secondary to-secondary-light;
+}
+
+.authentication .wrapper main .content .main .right-side {
+    @apply flex flex-col;
+    @apply w-1/2 h-full;
+    @apply items-center justify-center;
+}
+
+.authentication .wrapper main .content .main .right-side .holder {
+    @apply flex flex-col;
+    @apply w-full h-full;
+    @apply items-center justify-center;
+}
+
+/* **** AUTHENTICATION **** */
+/* ************************ */
