@@ -27,57 +27,31 @@
     <!-- Styles / Scripts -->
     @vite(['resources/css/laracare.css', 'resources/js/laracare.js'])
 </head>
-<body class="font-sans antialiased">
-<div class="m-0 box-border h-screen w-screen bg-gray-200 p-0">
-    <div class="sticky flex h-full space-x-0">
-        <div class="h-screen w-[3%] min-w-[60px] bg-green-200 text-sm not-has-[nav]:hidden p-4">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <nav class="flex flex-col items-center justify-start gap-4">
-                            <a
-                                href="{{ route('main') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                            >
-                                Dashboard
-                            </a>
-                            <a
-                                href="{{ route('user.profile') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                            >
-                                Profile
-                            </a>
-                        </nav>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
+<body class="font-sans antialiased @guest authentication @endguest">
 
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
+<x-notifications.toast/>
+
+<div class="wrapper">
+    @auth
+        <x-layouts.elements.main-nav/>
+
+        <x-layouts.elements.sidebar :title="$title" :section="$section"/>
+    @endauth
+    <main>
+        @auth
+            <x-layouts.elements.header/>
+        @endauth
+
+        <div class="content">
+            <div class="main">
+                {{ $slot }}
+            </div>
+
+            @auth
+                <x-layouts.elements.footer/>
+            @endauth
         </div>
-        <div class="w-[17%] min-w-[275px] bg-red-200 p-4 not-has-[div]:hidden">
-            Sidebar2 code
-            @isset($sidebar)
-                <div>{{ $sidebar }}</div>
-            @endisset
-        </div>
-        <div class="w-full space-y-44 overflow-y-scroll bg-teal-200 p-4">
-            <x-errors.main/>
-            {{ $slot }}
-        </div>
-    </div>
+    </main>
 </div>
 </body>
 </html>

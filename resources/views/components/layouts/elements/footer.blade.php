@@ -1,0 +1,11 @@
+<footer>
+    <ul>
+        <li>KK</li>
+    </ul>
+    <ul>
+        <li>LL</li>
+    </ul>
+    <ul>
+        <li>MM</li>
+    </ul>
+</footer>
