@@ -10,7 +10,6 @@
     </div>
     <div class="right-side">
         <div class="holder">
-            <x-errors.main/>
         </div>
 
         <x-layouts.elements.footer/>

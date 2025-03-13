@@ -10,8 +10,6 @@
     </div>
     <div class="right-side">
         <div class="holder">
-            <x-errors.main/>
-
             <div class="flex flex-col items-start gap-2 text-left sm:items-center sm:text-center">
                 <h1 class="text-xl font-medium">{{ __('Log in to your account') }}</h1>
                 <p class="text-muted-foreground text-sm text-balance">{{ __('Enter your username and password below to log in') }}</p>

@@ -28,6 +28,9 @@
     @vite(['resources/css/laracare.css', 'resources/js/laracare.js'])
 </head>
 <body class="font-sans antialiased @guest authentication @endguest">
+
+<x-notifications.toast/>
+
 <div class="wrapper">
     @auth
         <x-layouts.elements.main-nav/>
