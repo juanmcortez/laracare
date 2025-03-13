@@ -22,7 +22,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
+    <link href="https://fonts.bunny.net/css?family=Montserrat:wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
 
     <!-- Styles / Scripts -->
     @vite(['resources/css/laracare.css', 'resources/js/laracare.js'])
@@ -38,19 +38,34 @@
         <x-layouts.elements.sidebar :title="$title" :section="$section"/>
     @endauth
     <main>
+        @guest
+            <div class="content">
+                <div class="main">
+                    <div class="left-side">
+                        <a href="{{ route('main') }}" class="logo"><i class="fi fi-rs-webhook"></i></a>
+                    </div>
+                    <div class="right-side">
+                        <div class="holder">
+                            {{ $slot }}
+                        </div>
+
+                        <x-layouts.elements.footer/>
+                    </div>
+                </div>
+            </div>
+        @endguest
+
         @auth
             <x-layouts.elements.header/>
-        @endauth
 
-        <div class="content">
-            <div class="main">
-                {{ $slot }}
-            </div>
+            <div class="content">
+                <div class="main">
+                    {{ $slot }}
+                </div>
 
-            @auth
                 <x-layouts.elements.footer/>
-            @endauth
-        </div>
+            </div>
+        @endauth
     </main>
 </div>
 </body>
