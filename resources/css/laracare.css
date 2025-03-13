@@ -37,9 +37,13 @@
     --color-light-font: #7a7b7d;
     /* **** alerts **** */
     --color-info: #45b9f2;
+    --color-info-dark: #18739f;
     --color-success: #99dd4a;
+    --color-success-dark: #5a8c21;
     --color-warning: #555ab8;
+    --color-warning-dark: #232669;
     --color-danger: #fe6867;
+    --color-danger-dark: #b02928;
 }
 
 @layer base {
@@ -161,6 +165,49 @@
     @apply m-0 px-4;
     @apply items-center justify-between;
     @apply border-t border-secondary-light/10;
+}
+
+.toast {
+    @apply fixed flex;
+    @apply w-auto max-w-xs;
+    @apply right-5;
+    /* TOP is calculated by the script handling the repeats */
+    @apply px-2 pt-1.5 pb-2;
+    @apply text-xs;
+    @apply border-l-4;
+}
+
+.toast svg {
+    @apply w-3.5 h-3.5;
+    @apply mt-0.5 mr-2;
+}
+
+.toast.info,
+.toast.info svg {
+    @apply text-light;
+    @apply bg-info fill-info-dark;
+    @apply border-info-dark;
+}
+
+.toast.success,
+.toast.success svg {
+    @apply text-light;
+    @apply bg-success fill-success-dark;
+    @apply border-success-dark;
+}
+
+.toast.warning,
+.toast.warning svg {
+    @apply text-light;
+    @apply bg-warning fill-warning-dark;
+    @apply border-warning-dark;
+}
+
+.toast.alert,
+.toast.alert svg {
+    @apply text-light;
+    @apply bg-danger fill-danger-dark;
+    @apply border-danger-dark;
 }
 
 /* ************************ */
