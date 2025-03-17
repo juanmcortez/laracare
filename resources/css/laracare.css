@@ -224,6 +224,55 @@
     @apply border-danger-dark;
 }
 
+/* *********************** */
+/* **** FORM ELEMENTS **** */
+form {
+    @apply w-full h-auto;
+    @apply p-0 m-0;
+}
+
+.input-container {
+    @apply flex flex-col;
+}
+
+label {
+    @apply m-0 p-0 mb-2;
+    @apply leading-none;
+    @apply text-sm text-light-font;
+}
+
+input {
+    @apply leading-none;
+    @apply text-sm placeholder-light-font/35;
+}
+
+button {
+    @apply flex;
+    @apply items-center justify-center;
+    @apply px-4 py-2;
+    @apply bg-primary dark:bg-secondary;
+    @apply border border-transparent;
+    @apply rounded-sm;
+    @apply font-semibold text-xs;
+    @apply text-secondary dark:text-primary;
+    @apply uppercase tracking-widest;
+    @apply hover:bg-primary-dark dark:hover:bg-secondary-light;
+    @apply focus:bg-primary-dark dark:focus:bg-secondary-light;
+    @apply active:bg-primary dark:active:bg-secondary-light;
+    @apply focus:outline-none focus:ring-0 focus:ring-primary;
+    @apply focus:ring-offset-0 dark:focus:ring-offset-secondary;
+    @apply transition ease-in-out duration-150;
+}
+
+.auth-form {
+    @apply flex flex-col;
+    @apply py-4;
+    @apply gap-4;
+}
+
+/* **** FORM ELEMENTS **** */
+/* *********************** */
+
 /* ************************ */
 /* **** AUTHENTICATION **** */
 .authentication .wrapper main .content .main {
@@ -238,14 +287,15 @@
 }
 
 .authentication .wrapper main .content .main .left-side .logo {
-    @apply flex flex-col;
-    @apply w-full h-14;
+    @apply flex flex-row;
+    @apply w-auto h-14;
+    @apply mt-8 mx-auto;
     @apply items-center justify-center;
-    @apply text-light-font;
+    @apply text-accent text-2xl;
 }
 
 .authentication .wrapper main .content .main .left-side .logo i {
-    @apply mt-1;
+    @apply mt-1 mr-3;
     @apply text-4xl text-accent;
 }
 
@@ -259,6 +309,22 @@
     @apply flex flex-col;
     @apply w-full h-full;
     @apply items-center justify-center;
+}
+
+.authentication .wrapper main .content .main .right-side .holder .title-block {
+    @apply flex flex-col;
+    @apply w-full h-auto;
+    @apply items-start sm:items-center;
+    @apply gap-1 mb-4;
+    @apply text-left sm:text-center;
+}
+
+.authentication .wrapper main .content .main .right-side .holder .title-block h1 {
+    @apply text-xl font-medium;
+}
+
+.authentication .wrapper main .content .main .right-side .holder .title-block p {
+    @apply text-sm text-balance text-light-font;
 }
 
 /* **** AUTHENTICATION **** */
