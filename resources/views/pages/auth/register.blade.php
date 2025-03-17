@@ -3,13 +3,9 @@
     <x-slot:section></x-slot:section>
     <x-slot:sidebar></x-slot:sidebar>
 
-    <div class="flex flex-col items-start gap-2 text-left sm:items-center sm:text-center">
-        <h1 class="text-xl font-medium">{{ __('Create an account') }}</h1>
-        <p class="text-muted-foreground text-sm text-balance">{{ __('Enter your details below to create your account') }}</p>
-    </div>
+    <x-ui.forms.title formtitle="Create an account" formsubtitle="Enter your details below to create your account"/>
 
-    <form action="{{ route('register') }}" method="post" class="flex flex-col gap-6">
-        @csrf
+    <x-ui.forms.holder :url="route('register')" class="auth-form">
         <div class="grid gap-6">
             <div class="grid gap-2">
                 <Label for="username" class="text-sm text-neutral-500">{{ __("Username") }}</Label>
@@ -42,5 +38,5 @@
         <div class="text-muted-foreground text-center text-sm text-neutral-600">
             {{ __("Already have an account? ") }} <a href="{{ route('login') }}" tabIndex="5">{{ __("Log in") }}</a>
         </div>
-    </form>
+    </x-ui.forms.holder>
 </x-layouts.main>
