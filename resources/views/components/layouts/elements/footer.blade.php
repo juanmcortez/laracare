@@ -1,6 +1,6 @@
 <footer>
     <ul>
-        <li>KK</li>
+        <li>&nbsp;</li>
     </ul>
     <ul>
         <li>
@@ -8,6 +8,6 @@
         </li>
     </ul>
     <ul>
-        <li>MM</li>
+        <li>&nbsp;</li>
     </ul>
 </footer>
