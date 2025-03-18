@@ -8,6 +8,7 @@
  */
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Users\UserController;
 
 Route::middleware('auth')->group(function () {
     // Landing now is protected with login
@@ -16,8 +17,12 @@ Route::middleware('auth')->group(function () {
     })->name('main');
 
     // Logged in user files
-    Route::get('/user/profile', function () {
-        return view('pages.users.profile', ['user' => Auth::user()]);
-    })->name('user.profile');
+    Route::get('/users/list/all', [UserController::class, 'index'])->name('users.list');
+    Route::get('/users/profile/{username}/details', [UserController::class, 'show'])->name('users.profile');
+
+    // Settings
+    Route::get('/settings', function () {
+        return view('landing');
+    })->name('settings');
 });
 

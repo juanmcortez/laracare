@@ -1,28 +1,14 @@
 @props([
     'section' => null,
+    'sidebar' => null,
     'title' => config('app.name'),
 ])
 <aside class="sidebar">
-    <div class="app-name">{{ config('app.name') }}</div>
+    <h1 class="app-name">{{ config('app.name') }}</h1>
     <nav class="navigation">
-        <ul>
-            <li class="section"><h3>{{ $section ?? $title }}</h3></li>
-            <li>
-                <span>{{ __('Section subtitle') }}</span>
-                <ul>
-                    <li>EE</li>
-                    <li>FF</li>
-                    <li>GG</li>
-                </ul>
-            </li>
-            <li>
-                <span>{{ __('Section subtitle') }}</span>
-                <ul>
-                    <li>EE</li>
-                    <li>FF</li>
-                    <li>GG</li>
-                </ul>
-            </li>
-        </ul>
+        <h2 class="section">{{ $section ?? $title }}</h2>
+        @if($sidebar)
+            <div class="submenu">{{ $sidebar }}</div>
+        @endif
     </nav>
 </aside>

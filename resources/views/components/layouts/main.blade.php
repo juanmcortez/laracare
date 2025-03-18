@@ -35,7 +35,7 @@
     @auth
         <x-layouts.elements.main-nav/>
 
-        <x-layouts.elements.sidebar :title="$title" :section="$section"/>
+        <x-layouts.elements.sidebar :title="$title" :section="$section" :sidebar="$sidebar ?? null"/>
     @endauth
     <main>
         @guest
