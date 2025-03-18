@@ -264,8 +264,10 @@ h3 {
 
 .wrapper main .content .main {
     @apply flex-1 flex-col;
-    @apply w-full min-h-fit;
-    @apply m-0 p-4;
+    @apply m-4 p-4;
+    @apply rounded-sm;
+    @apply bg-linear-to-t from-light-variant/75 to-light/75;
+    @apply border border-light-variant;
     @apply items-start justify-start;
 }
 
