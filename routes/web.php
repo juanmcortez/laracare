@@ -9,6 +9,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Users\SettingsController;
 
 Route::middleware('auth')->group(function () {
     // Landing now is protected with login
@@ -21,8 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/profile/{username}/details', [UserController::class, 'show'])->name('users.profile');
 
     // Settings
-    Route::get('/settings', function () {
-        return view('landing');
-    })->name('settings');
+    Route::get('/practice/settings', [SettingsController::class, 'index'])->name('settings');
 });
 
