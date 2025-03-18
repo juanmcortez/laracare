@@ -58,7 +58,7 @@
         @endguest
 
         @auth
-            <x-layouts.elements.header/>
+            <x-layouts.elements.header :subtitle="$subtitle ?? null"/>
 
             <div class="content">
                 <div class="main">
