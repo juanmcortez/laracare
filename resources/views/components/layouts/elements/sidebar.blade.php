@@ -4,9 +4,9 @@
     'title' => config('app.name'),
 ])
 <aside class="sidebar">
-    <div class="app-name">{{ config('app.name') }}</div>
+    <h1 class="app-name">{{ config('app.name') }}</h1>
     <nav class="navigation">
-        <div class="section"><h3>{{ $section ?? $title }}</h3></div>
+        <h2 class="section">{{ $section ?? $title }}</h2>
         @if($sidebar)
             <div class="submenu">{{ $sidebar }}</div>
         @endif

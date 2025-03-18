@@ -1,5 +1,7 @@
 <aside class="main-nav">
-    <div class="logo"><i class="fi fi-rs-webhook"></i></div>
+    <h1 class="logo">
+        <x-ui.general.linkwicon icon="fi-rs-webhook" :url="route('main')" :title="config('app.name')"/>
+    </h1>
     <nav class="navigation">
         <ul>
             <li>

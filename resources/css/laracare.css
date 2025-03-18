@@ -60,6 +60,27 @@
     }
 }
 
+h1 {
+    @apply flex flex-row;
+    @apply items-center justify-start;
+    @apply uppercase;
+    @apply text-3xl leading-[30px];
+}
+
+h2 {
+    @apply flex flex-row;
+    @apply items-center justify-start;
+    @apply uppercase;
+    @apply text-xl leading-5;
+}
+
+h3 {
+    @apply flex flex-row;
+    @apply items-center justify-start;
+    @apply uppercase;
+    @apply text-lg leading-[18px];
+}
+
 .link-w-icon {
     @apply flex flex-row;
     @apply m-0 p-0;
@@ -141,9 +162,8 @@
 .wrapper .sidebar .app-name {
     @apply flex flex-col;
     @apply w-full h-14;
-    @apply px-4;
+    @apply px-4 m-0;
     @apply items-start justify-center;
-    @apply uppercase;
     @apply border-b border-secondary-light/10;
 }
 
@@ -308,6 +328,10 @@ form {
     @apply flex flex-col;
 }
 
+.checkbox-container {
+    @apply flex flex-row;
+}
+
 label {
     @apply m-0 p-0 mb-2;
     @apply leading-none;
@@ -317,6 +341,14 @@ label {
 input {
     @apply leading-none;
     @apply text-sm placeholder-light-font/35;
+}
+
+.checkbox-container input {
+    @apply m-0 p-0 mr-2;
+}
+
+.checkbox-container label {
+    @apply m-0 p-0 mt-0.5;
 }
 
 button {
