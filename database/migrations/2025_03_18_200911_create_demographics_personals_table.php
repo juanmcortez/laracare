@@ -28,6 +28,8 @@ return new class extends Migration {
             $table->string('social_security')->nullable();
             $table->string('license')->nullable();
 
+            $table->foreignId('address_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

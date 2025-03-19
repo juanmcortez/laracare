@@ -9,6 +9,7 @@
 
 namespace Database\Factories\Demographics;
 
+use App\Models\Demographics\Address;
 use App\Models\Demographics\Personal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,6 +30,7 @@ class PersonalFactory extends Factory
             'gender' => $gender,
             'social_security' => null,
             'license' => null,
+            'address_id' => $this->faker->randomElement([null, Address::factory()])
         ];
     }
 }
