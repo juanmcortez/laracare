@@ -1,5 +1,5 @@
 <div class="menu-block">
-    <span>{{ __('Patients') }}</span>
+    <span>{{ __('Users') }}</span>
     <ul>
         <li>
             <x-ui.general.linkwicon :url="route('users.list')" icon="fi-rs-member-list" :class="Request::routeIs('users.list') ? 'active' : null">
@@ -12,24 +12,9 @@
             </x-ui.general.linkwicon>
         </li>
         <li>
-            <x-ui.general.linkwicon url="/" icon="fi-rs-member-search" :class="Request::routeIs('users.search') ? 'active' : null">
-                {{ __('Search') }}
+            <x-ui.general.linkwicon url="/" icon="fi-rs-user-xmark" :class="Request::routeIs('users.search') ? 'active' : null">
+                {{ __('Disabled') }}
             </x-ui.general.linkwicon>
         </li>
-    </ul>
-</div>
-<div class="menu-block">
-    <span>{{ __('Account history') }}</span>
-    <ul>
-        @isset($users)
-            @foreach($users as $user)
-                <li>
-                    <x-ui.general.linkwicon :url="route('users.profile', ['username' => $user->username])"
-                                            :class="Request::fullUrlIs(route('users.profile', ['username' => $user->username])) ? 'active' : null">
-                        {{ $user->demographic->full_name }}
-                    </x-ui.general.linkwicon>
-                </li>
-            @endforeach
-        @endisset
     </ul>
 </div>
