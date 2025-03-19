@@ -20,7 +20,9 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        $users = User::all();
+        $users = User::whereIsActive(true)
+            ->with('demographic')
+            ->get();
         return view('pages.users.list', compact('users'));
     }
 
@@ -31,7 +33,9 @@ class UserController extends Controller
      */
     public function show(User $username): View
     {
-        $users = User::where('username', '!=', $username)->get();
+        $users = User::whereIsActive(true)
+            ->with('demographic')
+            ->get();
         $user = $username;
         return view('pages.users.profile', compact(['user', 'users']));
     }
