@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Personal extends Model
@@ -26,6 +27,13 @@ class Personal extends Model
      * @var string
      */
     protected $table = 'demographics_personals';
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['address'];
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +49,7 @@ class Personal extends Model
         'gender',
         'social_security',
         'license',
+        'address_id',
     ];
 
     /**
@@ -50,6 +59,7 @@ class Personal extends Model
      */
     protected $hidden = [
         'id',
+        'address_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -86,7 +96,7 @@ class Personal extends Model
         $fullName .= ' ';
         $fullName .= Str::of($this->middle_name)->lower()->ucfirst();
         return Attribute::make(
-            get: fn() => $fullName,
+            get: static fn() => $fullName,
         );
     }
 
@@ -96,7 +106,15 @@ class Personal extends Model
     protected function dateOfBirth(): Attribute
     {
         return Attribute::make(
-            get: fn(mixed $value) => Carbon::parse($value)->format('M d, Y'),
+            get: static fn(mixed $value) => Carbon::parse($value)->format('M d, Y'),
         );
+    }
+
+    /**
+     * Get the address associated with the demographics.
+     */
+    public function address(): HasOne
+    {
+        return $this->hasOne(Address::class, 'id', 'address_id')->withDefault();
     }
 }
