@@ -22,10 +22,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
+            'is_active' => true,
             'username' => 'superadmin',
             'email' => 'test@example.com',
         ]);
 
-        User::factory(9)->create();
+        User::factory(14)->create();
     }
 }
