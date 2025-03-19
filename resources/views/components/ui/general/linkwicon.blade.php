@@ -1,10 +1,12 @@
 @props([
     'target' => '_self',
     'title' => null,
-    'icon' => 'fi-rs-dashboard-monitor',
+    'icon' => false,
     'url' => '/',
 ])
 <a href="{{ $url }}" title="{{ $title ?? $slot }}" target="{{ $target }}" {{ $attributes->merge(['class' => 'link-w-icon group']) }}>
-    <i class="fi {{ $icon }}"></i>
+    @if($icon)
+        <i class="fi {{ $icon }}"></i>
+    @endif
     {{ $slot }}
 </a>

@@ -24,9 +24,9 @@
         @isset($users)
             @foreach($users as $user)
                 <li>
-                    <x-ui.general.linkwicon :url="route('users.profile', ['username' => $user->username])" icon="fi-rs-user-injured"
+                    <x-ui.general.linkwicon :url="route('users.profile', ['username' => $user->username])"
                                             :class="Request::fullUrlIs(route('users.profile', ['username' => $user->username])) ? 'active' : null">
-                        {{ $user->username }}
+                        {{ $user->demographic->full_name }}
                     </x-ui.general.linkwicon>
                 </li>
             @endforeach

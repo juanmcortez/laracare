@@ -10,8 +10,10 @@
 namespace App\Models\Users;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Demographics\Personal;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -34,9 +36,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'is_active',
         'username',
         'email',
         'password',
+        'personal_id',
     ];
 
     /**
@@ -46,12 +50,14 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'id',
+        'is_active',
         'password',
         'remember_token',
         'email_verified_at',
         'two_factor_secret',
         'two_factor_confirmed_at',
         'two_factor_recovery_codes',
+        'personal_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -68,5 +74,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function demographic(): HasOne
+    {
+        return $this->hasOne(Personal::class, 'id', 'personal_id')->withDefault();
     }
 }

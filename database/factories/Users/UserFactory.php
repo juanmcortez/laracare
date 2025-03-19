@@ -11,6 +11,7 @@ namespace Database\Factories\Users;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Demographics\Personal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -31,11 +32,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'is_active' => $this->faker->boolean(),
             'username' => fake()->unique()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'personal_id' => Personal::factory()->create(),
         ];
     }
 
