@@ -77,8 +77,13 @@ h2 {
 h3 {
     @apply flex flex-row;
     @apply items-center justify-start;
-    /*@apply uppercase;*/
     @apply text-base leading-4;
+}
+
+h4 {
+    @apply flex flex-row;
+    @apply items-center justify-start;
+    @apply text-sm leading-3;
 }
 
 .link-w-icon {
@@ -180,7 +185,7 @@ h3 {
 
 .wrapper .sidebar .navigation .section {
     @apply flex;
-    @apply w-full h-14;
+    @apply w-62 h-14;
     @apply px-4;
     @apply items-center justify-start;
     @apply uppercase;
@@ -237,10 +242,33 @@ h3 {
     @apply mr-2;
 }
 
+.wrapper .sidebar .navigation .submenu .menu-block .patient-info {
+    @apply flex flex-col;
+    @apply m-0 p-4;
+    @apply bg-light-variant;
+    @apply text-dark-font text-xs;
+    @apply space-y-4;
+}
+
+.wrapper .sidebar .navigation .submenu .menu-block .patient-info .info-block {
+    @apply flex flex-row;
+    @apply items-center justify-between;
+}
+
+.wrapper .sidebar .navigation .submenu .menu-block .patient-info .address {
+    @apply space-y-1;
+}
+
+.wrapper .sidebar .navigation .submenu .menu-block .patient-info .address .fail {
+    @apply text-danger-dark font-bold;
+    @apply text-center;
+}
+
 .wrapper main {
     @apply flex flex-col;
     @apply w-full h-full;
     @apply bg-linear-to-b from-light-variant to-light;
+    @apply border-l border-l-primary-dark/10;
 }
 
 .wrapper main header {
