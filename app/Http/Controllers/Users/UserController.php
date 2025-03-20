@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         $users = User::whereIsActive(true)
             ->with('demographic')
-            ->get();
+            ->paginate(30);
         return view('pages.users.list', compact('users'));
     }
 
