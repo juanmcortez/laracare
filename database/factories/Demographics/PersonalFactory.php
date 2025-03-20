@@ -28,8 +28,8 @@ class PersonalFactory extends Factory
             'last_name' => $this->faker->lastName($gender),
             'date_of_birth' => $this->faker->dateTimeBetween('-95 years', '-3 months'),
             'gender' => $gender,
-            'social_security' => null,
-            'license' => null,
+            'social_security' => $this->faker->randomElement([null, $this->faker->randomNumber(9, true)]),
+            'license' => $this->faker->randomElement([null, $this->faker->randomNumber(7, true)]),
             'address_id' => $this->faker->randomElement([null, Address::factory()])
         ];
     }

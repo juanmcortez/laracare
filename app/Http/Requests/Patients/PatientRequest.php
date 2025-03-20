@@ -19,6 +19,7 @@ class PatientRequest extends FormRequest
             'pid' => ['required', 'integer'],
             'eid' => ['nullable'],
             'personal_id' => ['required', 'exists:demographics_personals'],
+            'last_visited' => ['nullable', 'date'],
         ];
     }
 

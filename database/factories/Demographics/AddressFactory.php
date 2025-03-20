@@ -23,7 +23,7 @@ class AddressFactory extends Factory
             'street_name' => $this->faker->streetAddress(),
             'street_name_extended' => $this->faker->randomElement([null, $this->faker->streetName()]),
             'city' => $this->faker->city(),
-            'state' => Str::upper($this->faker->randomLetter().$this->faker->randomLetter().$this->faker->randomLetter()),
+            'state' => Str::upper($this->faker->randomLetter().$this->faker->randomLetter()),
             'postal_code' => $this->faker->postcode(),
             'country_code' => Str::upper($this->faker->randomLetter().$this->faker->randomLetter()),
         ];

@@ -27,9 +27,11 @@ class PatientController extends Controller
             ->orderBy('demographics_personals.middle_name')
             ->paginate(30);
 
-        $last_visited = Patient::inRandomOrder()
+        $last_visited = Patient::whereNotNull('last_visited')
+            ->orderBy('last_visited', 'DESC')
             ->take(10)
             ->get();
+
         return view('pages.patients.list', compact(['patients', 'last_visited']));
     }
 
@@ -40,11 +42,14 @@ class PatientController extends Controller
      */
     public function show(Patient $pid): View
     {
+        Patient::wherePid($pid->pid)->touch('last_visited');
         $patient = $pid;
 
-        $last_visited = Patient::inRandomOrder()
+        $last_visited = Patient::whereNotNull('last_visited')
+            ->orderBy('last_visited', 'DESC')
             ->take(10)
             ->get();
+
         return view('pages.patients.profile', compact(['patient', 'last_visited']));
     }
 }
