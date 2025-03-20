@@ -20,6 +20,7 @@ return new class extends Migration {
 
             $table->foreignId('personal_id');
 
+            $table->timestamp('last_visited')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
