@@ -20,11 +20,11 @@ Route::middleware('auth')->group(function () {
 
     // Patients in system
     Route::get('/patients/list/all', [PatientController::class, 'index'])->name('patients.list');
-    Route::get('/patients/profile/{pid}/details', [PatientController::class, 'show'])->name('patients.profile');
+    Route::get('/patients/{pid}/details', [PatientController::class, 'show'])->name('patients.profile');
 
     // Logged in user files
     Route::get('/users/list/all', [UserController::class, 'index'])->name('users.list');
-    Route::get('/users/profile/{username}/details', [UserController::class, 'show'])->name('users.profile');
+    Route::get('/users/{username}/details', [UserController::class, 'show'])->name('users.profile');
 
     // Settings
     Route::get('/practice/settings', [SettingsController::class, 'index'])->name('settings');
