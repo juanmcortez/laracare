@@ -4,7 +4,8 @@
     <x-slot:section>{{ __('Users') }}</x-slot:section>
     <x-slot:sidebar>@include('pages.users.submenu')</x-slot:sidebar>
     @foreach($users as $user)
-        <div class="flex flex-row mb-2 text-center">
+        <div class="flex flex-row mb-2 text-center hover:cursor-pointer" x-data
+             @click="window.location.href = '{{ route('users.profile', ['username' => $user->username]) }}'">
             <div class="w-3/12 text-left">{{ \Str::ucfirst($user->demographic->title) . '. ' . $user->demographic->full_name }}</div>
             <div class="w-2/12">{{ $user->demographic->date_of_birth }}</div>
             <div class="w-2/12">{{ \Str::ucfirst($user->demographic->gender) }}</div>
@@ -14,4 +15,5 @@
             </div>
         </div>
     @endforeach
+    {{ $users->links() }}
 </x-layouts.main>
