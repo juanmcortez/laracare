@@ -36,6 +36,7 @@ class Patient extends Model
         'pid',
         'eid',
         'personal_id',
+        'last_visited',
     ];
 
     /**
@@ -45,10 +46,23 @@ class Patient extends Model
      */
     protected $hidden = [
         'personal_id',
+        'last_visited',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'last_visited' => 'datetime',
+        ];
+    }
 
     /**
      * Get the phone associated with the user.

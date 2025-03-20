@@ -83,30 +83,42 @@ class Personal extends Model
      *
      * @var array
      */
-    protected $appends = ['full_name'];
+    protected $appends = ['full_name', 'age'];
 
     /**
-     * Get the user's first name.
+     * Get the user's full name.
      */
     protected function fullName(): Attribute
     {
         $fullName = Str::of($this->last_name)->lower()->ucfirst();
         $fullName .= ', ';
         $fullName .= Str::of($this->first_name)->lower()->ucfirst();
-        $fullName .= ' ';
-        $fullName .= Str::of($this->middle_name)->lower()->ucfirst();
+        if ($this->middle_name) {
+            $fullName .= ' ';
+            $fullName .= Str::of($this->middle_name)->lower()->ucfirst();
+        }
         return Attribute::make(
             get: static fn() => $fullName,
         );
     }
 
     /**
-     * Get the user's first name.
+     * Format the user's date of birth.
      */
     protected function dateOfBirth(): Attribute
     {
         return Attribute::make(
             get: static fn(mixed $value) => Carbon::parse($value)->format('M d, Y'),
+        );
+    }
+
+    /**
+     * Get the user's age based on date_of_birth.
+     */
+    protected function age(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Carbon::parse($this->date_of_birth)->age,
         );
     }
 

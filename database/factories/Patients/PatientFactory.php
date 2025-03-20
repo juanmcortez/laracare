@@ -23,6 +23,7 @@ class PatientFactory extends Factory
             // 'pid' => $this->faker->randomNumber(),
             'eid' => $this->faker->randomNumber(),
             'personal_id' => Personal::factory(),
+            'last_visited' => null,
         ];
     }
 }
