@@ -9,7 +9,7 @@
 
 namespace Database\Factories\Demographics;
 
-use Str;
+use App\Helpers\CountryStateHelper;
 use App\Models\Demographics\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,13 +19,15 @@ class AddressFactory extends Factory
 
     public function definition(): array
     {
+        $country = $this->faker->randomElement(CountryStateHelper::getCountries());
+        $state = $this->faker->randomElement(CountryStateHelper::getStates($country->code));
         return [
             'street_name' => $this->faker->streetAddress(),
             'street_name_extended' => $this->faker->randomElement([null, $this->faker->streetName()]),
             'city' => $this->faker->city(),
-            'state' => Str::upper($this->faker->randomLetter().$this->faker->randomLetter()),
+            'state' => $state->code,
             'postal_code' => $this->faker->postcode(),
-            'country_code' => Str::upper($this->faker->randomLetter().$this->faker->randomLetter()),
+            'country_code' => $country->code,
         ];
     }
 }
