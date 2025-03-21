@@ -28,7 +28,7 @@ return new class extends Migration {
             $table->string('password');
             $table->rememberToken();
 
-            $table->foreignId('personal_id')->nullable();
+            $table->unsignedBigInteger('personal_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
