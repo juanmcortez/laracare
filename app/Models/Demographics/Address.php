@@ -9,8 +9,10 @@
 
 namespace App\Models\Demographics;
 
+use App\Helpers\CountryStateHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
@@ -49,4 +51,32 @@ class Address extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['state_name', 'country_name'];
+
+    /**
+     * Get the address's state.
+     */
+    protected function StateName(): Attribute
+    {
+        $country_states = CountryStateHelper::getStatesArray($this->country_code);
+        return Attribute::make(
+            get: fn() => $country_states[$this->state],
+        );
+    }
+
+    /**
+     * Get the address's country.
+     */
+    protected function CountryName(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => CountryStateHelper::getCountry($this->country_code)->name,
+        );
+    }
 }

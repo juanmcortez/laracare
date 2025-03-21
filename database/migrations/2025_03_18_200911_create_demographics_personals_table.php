@@ -28,7 +28,7 @@ return new class extends Migration {
             $table->string('social_security')->nullable();
             $table->string('license')->nullable();
 
-            $table->foreignId('address_id')->nullable();
+            $table->unsignedBigInteger('address_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +37,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('personals');
+        Schema::dropIfExists('demographics_personals');
     }
 };
