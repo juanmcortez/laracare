@@ -18,13 +18,13 @@
                 @empty($patient->demographic->address->street_name)
                     <p class="fail">{{ __(' - No patient address available - ') }}</p>
                 @else
-                    <p class="font-bold">{{ $patient->demographic->address->street_name }}</p>
-                    @if($patient->demographic->address->street_name_extended)
-                        <p class="font-bold">{{ $patient->demographic->address->street_name_extended }}</p>
-                    @endif
-                    <p class="font-bold">{{ $patient->demographic->address->city }}, {{ $patient->demographic->address->state }}
-                        - {{ $patient->demographic->address->postal_code }}</p>
-                    <p class="font-bold">{{ $patient->demographic->address->country_code }}</p>
+                    @php
+                        $full_addr = $patient->demographic->address->street_name . ' ' . ($patient->demographic->address->street_name_extended ?? null);
+                    @endphp
+                    <p class="font-bold" title="{{ $full_addr }}">{{ \Str::limit($full_addr, 30) }}</p>
+                    <p class="font-bold">{{ $patient->demographic->address->city }}</p>
+                    <p class="font-bold">{{ $patient->demographic->address->state_name }} - {{ $patient->demographic->address->postal_code }}</p>
+                    <p class="font-bold">{{ $patient->demographic->address->country_name }}</p>
                 @endempty
             </div>
             <div class="info-block">

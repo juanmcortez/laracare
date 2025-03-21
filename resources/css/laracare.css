@@ -162,6 +162,7 @@ h4 {
     @apply text-light;
     @apply bg-linear-to-b from-primary-dark to-primary;
     @apply not-has-[nav.navigation>.submenu]:hidden;
+    @apply truncate;
 }
 
 .wrapper .sidebar .app-name {
@@ -185,12 +186,13 @@ h4 {
 
 .wrapper .sidebar .navigation .section {
     @apply flex;
-    @apply w-62 h-14;
+    @apply w-[243px] h-14;
     @apply px-4;
     @apply items-center justify-start;
     @apply uppercase;
     @apply text-dark-font;
     @apply bg-light-variant;
+    @apply truncate;
 }
 
 .wrapper .sidebar .navigation .submenu .menu-block span {
@@ -257,6 +259,7 @@ h4 {
 
 .wrapper .sidebar .navigation .submenu .menu-block .patient-info .address {
     @apply space-y-1;
+    @apply truncate;
 }
 
 .wrapper .sidebar .navigation .submenu .menu-block .patient-info .address .fail {
@@ -416,9 +419,18 @@ button {
 
 /* ************************ */
 /* **** AUTHENTICATION **** */
+.authentication .wrapper main {
+    @apply border-0;
+}
+
+.authentication .wrapper main .content {
+    @apply overflow-y-hidden;
+}
+
 .authentication .wrapper main .content .main {
     @apply flex flex-row;
     @apply m-0 p-0;
+    @apply border-0;
 }
 
 .authentication .wrapper main .content .main .left-side {
