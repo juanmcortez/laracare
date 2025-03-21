@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Prefill DB with necessary info
+        $this->callSilent([
+            CountriesStatesSeeder::class
+        ]);
+
+        // Create users and patients
         User::factory()->create([
             'is_active' => true,
             'username' => 'superadmin',
