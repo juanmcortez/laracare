@@ -19,11 +19,14 @@ class PatientFactory extends Factory
 
     public function definition(): array
     {
+        $random_date = $this->faker->dateTimeBetween('-1 year', '-1 hour');
         return [
             // 'pid' => $this->faker->randomNumber(),
             'eid' => $this->faker->randomNumber(),
-            'personal_id' => Personal::factory(),
+            'personal_id' => Personal::factory()->create(['created_at' => $random_date, 'updated_at' => $random_date]),
             'last_visited' => null,
+            'created_at' => $random_date,
+            'updated_at' => $random_date,
         ];
     }
 }
