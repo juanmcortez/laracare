@@ -42,7 +42,7 @@
             <div class="content">
                 <div class="main">
                     <div class="left-side">
-                        <a href="{{ route('main') }}" class="logo">
+                        <a href="{{ route('dashboard') }}" class="logo">
                             <i class="fi fi-rs-webhook"></i> {{ config('app.name') }}
                         </a>
                     </div>

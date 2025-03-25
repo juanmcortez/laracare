@@ -25,7 +25,7 @@ class PatientController extends Controller
             ->orderBy('demographics_personals.last_name')
             ->orderBy('demographics_personals.first_name')
             ->orderBy('demographics_personals.middle_name')
-            ->paginate(30);
+            ->paginate(100);
 
         $last_visited = Patient::whereNotNull('last_visited')
             ->orderBy('last_visited', 'DESC')
