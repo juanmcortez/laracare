@@ -62,8 +62,9 @@
             @foreach($last_visited as $patient)
                 <li>
                     <x-ui.general.linkwicon :url="route('patients.profile', ['pid' => $patient->pid])"
-                                            :class="Request::fullUrlIs(route('patients.profile', ['pid' => $patient->pid])) ? 'active' : null">
-                        {{ $patient->demographic->full_name }}
+                                            :class="Request::fullUrlIs(route('patients.profile', ['pid' => $patient->pid])) ? 'active' : null"
+                                            title="{{ $patient->demographic->full_name }}">
+                        {{ \Str::limit($patient->demographic->full_name, 25) }}
                     </x-ui.general.linkwicon>
                 </li>
             @endforeach
