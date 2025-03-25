@@ -35,8 +35,12 @@ return new class extends Migration {
 
     public function down(): void
     {
-        /*Schema::table('', function (Blueprint $table) {
-            //
-        });*/
+        Schema::table('demographics_personals', function (Blueprint $table) {
+            $table->dropForeign(['address_id']);
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['personal_id']);
+        });
     }
 };

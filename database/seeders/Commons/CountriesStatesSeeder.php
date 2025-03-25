@@ -7,7 +7,7 @@
  *  @license MIT License
  */
 
-namespace Database\Seeders;
+namespace Database\Seeders\Commons;
 
 use DB;
 use Illuminate\Database\Seeder;

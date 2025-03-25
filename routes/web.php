@@ -11,12 +11,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\Users\SettingsController;
 use App\Http\Controllers\Patients\PatientController;
+use App\Http\Controllers\Commons\DashboardController;
 
 Route::middleware('auth')->group(function () {
     // Landing now is protected with login
-    Route::get('/', function () {
-        return view('landing');
-    })->name('main');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Patients in system
     Route::get('/patients/list/all', [PatientController::class, 'index'])->name('patients.list');

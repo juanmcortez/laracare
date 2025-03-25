@@ -1,12 +1,12 @@
 <aside class="main-nav">
     <h1 class="logo">
-        <x-ui.general.linkwicon icon="fi-rs-webhook" :url="route('main')" :title="config('app.name')"/>
+        <x-ui.general.linkwicon icon="fi-rs-webhook" :url="route('dashboard')" :title="config('app.name')"/>
     </h1>
     <nav class="navigation">
         <ul>
             <li>
-                <x-ui.general.linkwicon icon="fi-rs-dashboard-monitor" :url="route('main')" :title="__('Dashboard')"
-                                        :class="Request::routeIs('main') ? 'active' : null"/>
+                <x-ui.general.linkwicon icon="fi-rs-dashboard-monitor" :url="route('dashboard')" :title="__('Dashboard')"
+                                        :class="Request::routeIs('dashboard') ? 'active' : null"/>
             </li>
             <li>
                 <x-ui.general.linkwicon icon="fi-rs-user-injured" :url="route('patients.list')" :title="__('Patients')"

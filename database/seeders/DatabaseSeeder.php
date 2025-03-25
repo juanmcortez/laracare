@@ -9,9 +9,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Users\User;
 use Illuminate\Database\Seeder;
-use App\Models\Patients\Patient;
+use Database\Seeders\Users\UserSeeder;
+use Database\Seeders\Patients\PatientSeeder;
+use Database\Seeders\Commons\CountriesStatesSeeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -24,18 +25,9 @@ class DatabaseSeeder extends Seeder
     {
         // Prefill DB with necessary info
         $this->callSilent([
-            CountriesStatesSeeder::class
+            CountriesStatesSeeder::class,
+            UserSeeder::class,
+            PatientSeeder::class
         ]);
-
-        // Create users and patients
-        User::factory()->create([
-            'is_active' => true,
-            'username' => 'superadmin',
-            'email' => 'test@example.com',
-        ]);
-
-        User::factory(14)->create();
-
-        Patient::factory(50)->create();
     }
 }
