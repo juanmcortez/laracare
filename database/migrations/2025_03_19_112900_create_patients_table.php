@@ -16,7 +16,7 @@ return new class extends Migration {
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->unsignedBigInteger('pid')->index()->unique()->autoIncrement();
-            $table->string('eid')->nullable();
+            $table->string('eid', 64)->nullable();
 
             $table->foreignId('personal_id');
 
