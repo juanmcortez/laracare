@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     // Patients in system
     Route::get('/patients/list/all', [PatientController::class, 'index'])->name('patients.list');
     Route::get('/patients/{pid}/details', [PatientController::class, 'show'])->name('patients.profile');
+    Route::get('/patients/{pid}/details/edit', [PatientController::class, 'edit'])->name('patients.profile.edit');
+    Route::post('/patients/{pid}/details/update', [PatientController::class, 'update'])->name('patients.profile.update');
 
     // Logged in user files
     Route::get('/users/list/all', [UserController::class, 'index'])->name('users.list');

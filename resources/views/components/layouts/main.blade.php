@@ -22,7 +22,6 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Montserrat:wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
 
     <!-- Styles / Scripts -->
     @vite(['resources/css/laracare.css', 'resources/js/laracare.js'])

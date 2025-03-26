@@ -1,6 +1,13 @@
 <div class="menu-block">
     @isset($patient)
-        <span>{{ __('Patient details') }}</span>
+        <div class="initial-header">
+            <span>{{ __('Patient details') }}</span>
+            @if(Request::routeIs('patients.profile'))
+                <x-ui.general.linkwicon :url="route('patients.profile.edit', ['pid' => $patient->pid])" icon="fi-rs-pencil" class="edit-link"/>
+            @else
+                <x-ui.general.linkwicon :url="route('patients.profile', ['pid' => $patient->pid])" icon="fi-rs-angle-double-left" class="edit-link"/>
+            @endif
+        </div>
         <div class="patient-info">
             <div class="info-block">
                 <p>{!! __('PID: <strong>:pid</strong>', ['pid' => $patient->pid]) !!}</p>
