@@ -15,16 +15,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('countries_states', function (Blueprint $table) {
-            $table->string('code', 2);
-            $table->string('country_code', 2);
-            $table->string('name');
+            $table->string('code', 8);
+            $table->string('country_code', 8);
+            $table->string('name', 64);
             $table->timestamps();
 
             $table->primary(['country_code', 'code']);
-            $table->foreign('country_code')
-                ->references('code')
-                ->on('countries')
-                ->onDelete('cascade');
         });
     }
 

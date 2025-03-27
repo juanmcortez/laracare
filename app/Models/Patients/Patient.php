@@ -20,6 +20,13 @@ class Patient extends Model
     use HasFactory, SoftDeletes;
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'pid';
+
+    /**
      * Get the route key for the model.
      */
     public function getRouteKeyName(): string

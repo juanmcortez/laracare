@@ -31,10 +31,23 @@ return new class extends Migration {
                     ->onDelete('cascade');
             });
         }
+
+        if (Schema::hasTable('countries_states')) {
+            Schema::table('countries_states', function (Blueprint $table) {
+                $table->foreign('country_code')
+                    ->references('code')
+                    ->on('countries')
+                    ->onDelete('cascade');
+            });
+        }
     }
 
     public function down(): void
     {
+        Schema::table('countries_states', function (Blueprint $table) {
+            $table->dropForeign(['country_code']);
+        });
+
         Schema::table('demographics_personals', function (Blueprint $table) {
             $table->dropForeign(['address_id']);
         });

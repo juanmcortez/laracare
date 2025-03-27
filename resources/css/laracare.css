@@ -6,6 +6,8 @@
  *  @license MIT License
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import 'tailwindcss';
 @import "@flaticon/flaticon-uicons/css/regular/straight.css";
 @import "@flaticon/flaticon-uicons/css/solid/straight.css";
@@ -20,7 +22,7 @@
 @source "../**/*.vue";
 
 @theme {
-    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Montserrat', sans-serif, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* **** dark / light **** */
@@ -56,8 +58,13 @@
 
     body {
         font-optical-sizing: auto;
+        font-weight: 400;
         font-style: normal;
     }
+}
+
+[x-cloak] {
+    @apply hidden;
 }
 
 h1 {
@@ -180,7 +187,7 @@ h4 {
 }
 
 .wrapper .sidebar .navigation .submenu,
-.wrapper .sidebar .navigation .submenu div {
+.wrapper .sidebar .navigation .submenu .menu-block {
     @apply w-full h-auto;
 }
 
@@ -195,7 +202,8 @@ h4 {
     @apply truncate;
 }
 
-.wrapper .sidebar .navigation .submenu .menu-block span {
+.wrapper .sidebar .navigation .submenu .menu-block span,
+.wrapper .sidebar .navigation .submenu .menu-block .initial-header {
     @apply flex;
     @apply w-full h-auto;
     @apply my-0 pt-0.5 pb-1 pl-4;
@@ -207,6 +215,24 @@ h4 {
 /*.wrapper .sidebar .navigation .submenu .menu-block:first-of-type span {
     @apply my-0 mb-1;
 }*/
+
+.wrapper .sidebar .navigation .submenu .menu-block .initial-header {
+    @apply flex flex-row;
+    @apply items-center justify-between;
+    @apply w-auto h-auto;
+}
+
+.wrapper .sidebar .navigation .submenu .menu-block .initial-header span {
+    @apply m-0 p-0;
+    @apply bg-transparent;
+}
+
+.wrapper .sidebar .navigation .submenu .menu-block .initial-header .edit-link {
+    @apply flex flex-row;
+    @apply m-0 p-0 mr-4 pt-0.5;
+    @apply w-auto h-auto;
+    @apply text-light hover:text-light-variant active:text-light-font;
+}
 
 .wrapper .sidebar .navigation .submenu .menu-block ul {
     @apply flex flex-col;
@@ -380,6 +406,12 @@ label {
 input {
     @apply leading-none;
     @apply text-sm placeholder-light-font/35;
+}
+
+input[disabled] {
+    @apply text-light-font/70;
+    @apply border border-light-font/25;
+    @apply bg-light-font/15;
 }
 
 .checkbox-container input {

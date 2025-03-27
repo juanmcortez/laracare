@@ -17,16 +17,16 @@ return new class extends Migration {
         Schema::create('demographics_personals', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title')->nullable();
-            $table->string('first_name');
-            $table->string('middle_name')->nullable();
-            $table->string('last_name');
+            $table->string('title', 8)->nullable();
+            $table->string('first_name', 64);
+            $table->string('middle_name', 64)->nullable();
+            $table->string('last_name', 64);
 
             $table->date('date_of_birth');
-            $table->string('gender')->nullable();
+            $table->string('gender', 16)->nullable();
 
-            $table->string('social_security')->nullable();
-            $table->string('license')->nullable();
+            $table->string('social_security', 16)->nullable();
+            $table->string('license', 16)->nullable();
 
             $table->unsignedBigInteger('address_id')->nullable();
 
