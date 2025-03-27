@@ -59,8 +59,8 @@
                 </div>
                 <div class="flex-1 flex-col pl-4">
                     <div class="text-light-font uppercase">{{ __('Newest patient on the system') }}</div>
-                    <div class="flex items-center justify-between text-dark-font text-4xl align-bottom">
-                        {{ $review->get('latest_patient') }}
+                    <div class="flex items-center justify-between text-dark-font text-4xl align-bottom" title="{{ $review->get('latest_patient') }}">
+                        {{ \Str::limit($review->get('latest_patient'), 15) }}
                     </div>
                 </div>
             </div>
