@@ -30,7 +30,22 @@ class PersonalFactory extends Factory
             'gender' => $gender,
             'social_security' => $this->faker->randomElement([null, $this->faker->randomNumber(9, true)]),
             'license' => $this->faker->randomElement([null, $this->faker->randomNumber(7, true)]),
-            'address_id' => $this->faker->randomElement([null, Address::factory()])
+            'address_id' => $this->faker->randomElement([Address::factory(), Address::factory()->empty()])
         ];
+    }
+
+    public function empty(): static
+    {
+        return $this->state(fn(array $attributes) => [
+            'title' => null,
+            'first_name' => null,
+            'middle_name' => null,
+            'last_name' => null,
+            'date_of_birth' => null,
+            'gender' => null,
+            'social_security' => null,
+            'license' => null,
+            'address_id' => Address::factory()->empty(),
+        ]);
     }
 }

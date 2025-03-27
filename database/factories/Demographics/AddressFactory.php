@@ -30,4 +30,16 @@ class AddressFactory extends Factory
             'country_code' => $country->code,
         ];
     }
+
+    public function empty(): static
+    {
+        return $this->state(fn(array $attributes) => [
+            'street_name' => null,
+            'street_name_extended' => null,
+            'city' => null,
+            'state' => null,
+            'postal_code' => null,
+            'country_code' => null,
+        ]);
+    }
 }
